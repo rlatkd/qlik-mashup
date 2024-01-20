@@ -1,7 +1,22 @@
 import { Col } from "../../../components/grid/grid";
-import Chart from "../../../components/chart-placeholder"
+import Chart from "../../../components/chart-placeholder";
+import { useData } from "@motor-js/engine";
 
 const RowTwo = () => {
+  const cols = [
+    {
+      qField: "[OrderDate]",
+      qLabel: "OrderDate",
+    },
+    {
+      qField: "=Sum(Sales*Quantity)",
+      qLabel: "Revenue",
+    },
+  ];
+
+  const { dataSet } = useData({ cols });
+
+  console.log(dataSet);
 
   return (
     <>

@@ -1,19 +1,19 @@
-import React, { Suspense } from 'react';
+import React, { Suspense } from "react";
 // import ReactDOM from 'react-dom';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 import { theme } from "./theme";
 import { GlobalStyle } from "./css";
-import { ThemeProvider } from '@motor-js/theme'
-import { Motor } from '@motor-js/engine'
-import { appSettings, qlikConfig } from "./settings"
-import { createRoot } from 'react-dom/client'
+import { ThemeProvider } from "@motor-js/theme";
+import { Motor } from "@motor-js/engine";
+import { appSettings, qlikConfig } from "./settings";
+import { createRoot } from "react-dom/client";
 
-const root = createRoot(document.getElementById('root'));
+const root = createRoot(document.getElementById("root"));
 
 const AppWrapper = () => (
   <Suspense fallback={<div>Loading...</div>}>
-    <Motor 
+    <Motor
       config={qlikConfig}
       logo={appSettings.logo}
       logoHeight={appSettings.logoHeight}

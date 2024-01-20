@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { X } from "react-feather";
 import { Input } from "../forms/form-elements";
-import { useSearch } from "@motor-js/engine"
+import { useSearch } from "@motor-js/engine";
 import {
   StyledSearch,
   StyledSearchHeader,
@@ -15,48 +15,41 @@ import {
 } from "./style";
 
 const SearchBar = ({ isOpen, onClose }) => {
-
   const [options, setOptions] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
   const qCount = 100;
   const qGroupItemCount = 100;
 
-  const { 
-    flatResults,
-    flatSelect,
-  } = useSearch({ 
+  const { flatResults, flatSelect } = useSearch({
     searchValue,
     qCount,
-    qGroupItemCount
-  })
-
+    qGroupItemCount,
+  });
 
   // Temporary Search suggestions for you to update
   const searchSuggestions = [
     {
-    item: "Search Term A"
+      item: "Search Term A",
     },
     {
-      item: "Search Term B"
+      item: "Search Term B",
     },
     {
-      item: "Search Term C"
-    }
+      item: "Search Term C",
+    },
   ];
 
-  const handleSearch = (value) => (
-    setSearchValue(value)
-  )
+  const handleSearch = (value) => setSearchValue(value);
 
   const handleSelect = (val, dim) => {
-    flatSelect(dim,val)
-    onClose()
+    flatSelect(dim, val);
+    onClose();
   };
 
   useEffect(() => {
-    setOptions(flatResults)
-  },[flatResults])
+    setOptions(flatResults);
+  }, [flatResults]);
 
   return (
     <StyledSearch $isOpen={isOpen}>
@@ -77,11 +70,16 @@ const SearchBar = ({ isOpen, onClose }) => {
       <StyledSearchBody>
         <StyledSearchTitle>Search Results</StyledSearchTitle>
         <StyledNavList>
-          { options && options.map((data,i) => (
-            <StyledNavListItem key={i} >
-              <StyledNavBtn onClick={() => handleSelect(data.value, data.dimension)}>{data.value}</StyledNavBtn>
-            </StyledNavListItem>
-          ))}
+          {options &&
+            options.map((data, i) => (
+              <StyledNavListItem key={i}>
+                <StyledNavBtn
+                  onClick={() => handleSelect(data.value, data.dimension)}
+                >
+                  {data.value}
+                </StyledNavBtn>
+              </StyledNavListItem>
+            ))}
         </StyledNavList>
       </StyledSearchBody>
       <StyledSearchBody>

@@ -1,13 +1,13 @@
-import { useState, useCallback, } from "react";
+import { useState, useCallback } from "react";
 import { Search, Menu, X } from "react-feather";
-import { useSelections } from "@motor-js/engine"
+import { useSelections } from "@motor-js/engine";
 
 import { Button, Navbar } from "../../components";
 import { menuData } from "../../components/data";
 import Logo from "../../components/logo";
 import SearchBar from "../../components/search-bar";
 import CurrentSelections from "../../components/current-selections";
-import FilterDropDown from "../../components/filter-dropdown"
+import FilterDropDown from "../../components/filter-dropdown";
 
 import {
   StyledHeader,
@@ -23,7 +23,6 @@ import {
 } from "./style";
 
 const Header = () => {
-
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
@@ -39,13 +38,10 @@ const Header = () => {
 
   return (
     <>
-      <StyledHeader> 
-          <StyledMenuBtn
-            variant="texted"
-            onClick={menuHandler}
-          >
-            <Menu size={20} strokeWidth="2.5px" />
-          </StyledMenuBtn>
+      <StyledHeader>
+        <StyledMenuBtn variant="texted" onClick={menuHandler}>
+          <Menu size={20} strokeWidth="2.5px" />
+        </StyledMenuBtn>
         <StyledLogo>
           <Logo />
         </StyledLogo>
@@ -68,15 +64,18 @@ const Header = () => {
         </StyledNavbarWrap>
         <StyleNavbarRight>
           <StyledNavbarElement ml={["8px", "15px"]}>
-            <CurrentSelections selections={selections} clear={clearSelections} />
+            <CurrentSelections
+              selections={selections}
+              clear={clearSelections}
+            />
           </StyledNavbarElement>
           <StyledNavbarElement ml={["8px", "15px"]}>
             <FilterDropDown />
           </StyledNavbarElement>
           <StyledNavbarElement ml={["8px", "15px"]}>
-          <Button variant="texted" onClick={searchHandler}>
-            <Search className="header-icon" />
-          </Button>
+            <Button variant="texted" onClick={searchHandler}>
+              <Search className="header-icon" />
+            </Button>
           </StyledNavbarElement>
         </StyleNavbarRight>
       </StyledHeader>
